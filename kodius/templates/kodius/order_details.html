@@ -1,0 +1,15 @@
+{% extends 'kodius/base.html' %}
+
+{% block content %}
+    <h2>Order {{ object.brand}} - {{ object.model }}</h2>
+        {{ object.brand }}
+        {{ object.model }}
+        {{ object.model_year }}
+        {{ object.mileage }}
+        {{ object.choose_date }}
+        {{ object.chain_change_price }}
+        {{ object.oil_and_oil_filter_change_price }}
+        {{ object.air_filter_change_price }}
+        {{ object.brake_fluid_change_price }}
+{% endblock %}
+</body>

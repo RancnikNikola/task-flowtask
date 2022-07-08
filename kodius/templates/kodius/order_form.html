@@ -1,0 +1,15 @@
+{% extends 'kodius/base.html' %}
+
+{% block content %}
+    <section>
+        <div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <fieldset>
+                    {{ form.as_p }}
+                </fieldset>
+                <button type="submit">Order</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'kodius/base.html' %}
+
+{% block content %}
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Order ID</th>
+      <th scope="col">Service Date</th>
+      <th scope="col">Model</th>
+      <th scope="col">Mileage</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+   {% for order in orders %}
+   <tr>
+      <th scope="row">{{ order.id }}</th>
+      <td>{{ order.choose_date }}</td>
+      <td>{{ order.model }}</td>
+      <td>{{ order.mileage }}</td>
+      <td>{{ order.status }}</td>
+      <td><a href="#">description</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

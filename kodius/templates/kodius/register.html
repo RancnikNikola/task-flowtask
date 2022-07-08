@@ -1,0 +1,19 @@
+{% extends 'kodius/base.html' %}
+
+{% block content %}
+    <section>
+        <div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <fieldset class="form-control">
+                    {{ form.as_p }}
+                </fieldset>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div>
+            <small>Already have an account?</small>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+    </section>
+{% endblock %}

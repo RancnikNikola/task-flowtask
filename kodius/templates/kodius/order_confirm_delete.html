@@ -1,0 +1,16 @@
+{% extends 'kodius/base.html' %}
+
+{% block content %}
+    <section>
+        <div>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Delete Order</legend>
+                    <h3>Are you sure you want to delete the order {{ object.brand }} {{ object.model }}</h3>
+                </fieldset>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
