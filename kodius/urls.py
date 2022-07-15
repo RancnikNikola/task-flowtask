@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import register, my_orders
+from .views import register
 from django.contrib.auth import views as auth_view
-from .views import OrderListView, OrderDetailView, OrderCreateView, OrderUpdateView, OrderDeleteView
+from .views import OrderListView, OrderCreateView, OrderDetailView, OrderUpdateView, load_models
 
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('my_orders/<int:pk>/', OrderDetailView.as_view(template_name="kodius/order_details.html"), name="order_details"),
     path('my_orders/<int:pk>/update', OrderUpdateView.as_view(),
          name="order_update"),
-    path('my_orders/<int:pk>/delete', OrderDeleteView.as_view(),
-         name="order_delete"),
+
+
+    path('ajax/load-models/', load_models, name="ajax_load_models")
 ]

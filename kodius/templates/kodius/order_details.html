@@ -2,14 +2,16 @@
 
 {% block content %}
     <h2>Order {{ object.brand}} - {{ object.model }}</h2>
-        {{ object.brand }}
-        {{ object.model }}
-        {{ object.model_year }}
-        {{ object.mileage }}
-        {{ object.choose_date }}
-        {{ object.chain_change_price }}
-        {{ object.oil_and_oil_filter_change_price }}
-        {{ object.air_filter_change_price }}
-        {{ object.brake_fluid_change_price }}
+        <p>Brand: {{ object.brand }}
+        <p>Model: {{ object.model }}</p>
+        <p>Model Year: {{ object.model_year }}</p>
+        <p>Mileage: {{ object.mileage }}</p>
+        <p>Delivery Date: {{ object.choose_date }}</p>
+        <p>chain_change_price: {{ object.chain_change_price }}</p>
+        <p>oil_and_oil_filter_change_price: {{ object.oil_and_oil_filter_change_price }}</p>
+        <p>air_filter_change_price: {{ object.air_filter_change_price }}</p>
+        <p>brake_fluid_change_price: {{ object.brake_fluid_change_price }}</p>
+        <p>Order status: {{ object.order_status }}</p>
+        <a href="{% url 'order_update' order.id %}">Edit</a>
 {% endblock %}
 </body>

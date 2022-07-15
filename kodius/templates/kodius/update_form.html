@@ -71,7 +71,7 @@
                         <p>Chain Change: 100$</p>
                         <p>Oil and Filter Change: 100$</p>
                         <p>Air Filter Change: 100$</p>
-                        <hr />
+                        <hr>
                         <p>Full price: $200</p>
                         <p>Discount: 20%</p>
                         <p>Price: 180$</p>
@@ -80,40 +80,13 @@
             </div>
 
           <div class="mb-3">
+              <button type="submit" name="cancel_order" class="btn">Cancel Order</button>
               <button type="submit" class="btn btn-primary">Create Order</button>
-        </div>
+          </div>
 
         </div>
       </div>
     </div>
   </form>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        $("#id_brand").change(function () {
-            const url = $("#orderForm").attr("data-models-url");  // get the url of the `load_cities` view
-            const brandId = $(this).val();  // get the selected country ID from the HTML input
-
-            $.ajax({                       // initialize an AJAX request
-                url: url,                    // set the url of the request (= /ajax/load-cities/ )
-                data: {
-                    'brand_id': brandId       // add the country id to the GET parameters
-                },
-                success: function (data) {   // `data` is the return of the `load_cities` view function
-                    $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
-                    /*
-
-                    let html_data = '<option value="">---------</option>';
-                        data.forEach(function (model) {
-                            html_data += `<option value="${model.id}">${model.name}</option>`
-                        });
-                    console.log(html_data);
-                    $("#id_model").html(html_data);
-
-                    */
-                }
-            });
-
-        });
-    </script>
   </body>
 </html>

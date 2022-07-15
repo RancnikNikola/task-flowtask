@@ -1,31 +1,69 @@
-{% extends 'kodius/base.html' %}
+<!doctype html>
+{% load crispy_forms_tags %}
 
-{% block content %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+          <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js" integrity="sha256-VBLiveTKyUZMEzJd6z2mhfxIqz3ZATCuVMawPZGzIfA=" crossorigin="anonymous"></script>
 
+    <!-- Tempus Dominus Bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha256-XPTBwC3SBoWHSmKasAk01c08M6sIA5gF5+sRxqak2Qs=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha256-z0oKYg6xiLq3yJGsp/LsY9XykbweQlHl42jHv2XTBz4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body class="bg-light">
+  <div class="container mt-5">
+      <div class="row">
+          <div class="col-8">
+              <h1>Alpha</h1>
+          </div>
+          <div class="col-4">
+              <a class="btn btn-primary" href="{% url 'new_order' %}">Create New Order</a>
+          </div>
+      </div>
+  </div>
+      <div class="container">
+      <div class="row">
+        <div class="col-8">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Order ID</th>
+                      <th scope="col">Service Date</th>
+                      <th scope="col">Model</th>
+                      <th scope="col">Mileage</th>
+                      <th scope="col">Progress</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for order in orders %}
+                    <tr>
+                      <td>{{ order.id }}</td>
+                      <td>{{ order.choose_date }}</td>
+                      <td>{{ order.model }}</td>
+                      <td>{{ order.mileage }}</td>
+                      <td>{{ order.order_status }}</td>
+                      <td><a href="{% url 'order_details' order.id %}">description</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+        </div>
+        <div class="col-4">
+          <div class="container border mt-5 p-3">
+                    <h4>Thank you for your order</h4>
+                        <p>Order ID #{{ last_order_id.id }}</p>
+                    <div class="mt-5">
+                        <p>Lorem ipsum dolor sit amet, consescetur adipiscing elit</p>
+                    </div>
+                </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Order ID</th>
-      <th scope="col">Service Date</th>
-      <th scope="col">Model</th>
-      <th scope="col">Mileage</th>
-      <th scope="col">Status</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-
-   {% for order in orders %}
-   <tr>
-      <th scope="row">{{ order.id }}</th>
-      <td>{{ order.choose_date }}</td>
-      <td>{{ order.model }}</td>
-      <td>{{ order.mileage }}</td>
-      <td>{{ order.status }}</td>
-      <td><a href="#">description</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% endblock %}

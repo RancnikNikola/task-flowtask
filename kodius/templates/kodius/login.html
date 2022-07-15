@@ -1,15 +1,36 @@
 {% extends 'kodius/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <section>
         <div>
-            <form method="POST" action="">
-                {% csrf_token %}
-                <fieldset class="form-control">
-                    {{ form.as_p }}
-                <button class="btn btn-primary" type="submit">Login</button>
-                </fieldset>
-            </form>
+
+
+       <form method="POST">
+           {% csrf_token %}
+           <div class="form-row">
+               <div class="form-group col-md-4">
+                   {{ form.username|as_crispy_field }}
+               </div>
+           </div>
+            <div class="form-row">
+               <div class="form-group col-md-4">
+                   {{ form.password|as_crispy_field }}
+               </div>
+           </div>
+             <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+             </div>
+            <div class="form-row">
+               <div class="form-group col-md-4">
+                   <button type="submit" class="btn btn-primary">Login</button>
+               </div>
+           </div>
+       </form>
+
+
+
         </div>
         <div>
             <small>Don't have an account?</small>
@@ -17,3 +38,8 @@
         </div>
     </section>
 {% endblock %}
+
+
+
+
+  </body>

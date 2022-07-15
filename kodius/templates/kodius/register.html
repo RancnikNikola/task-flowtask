@@ -1,16 +1,36 @@
 {% extends 'kodius/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <section>
-        <div>
-            <form method="POST" action="">
-                {% csrf_token %}
-                <fieldset class="form-control">
-                    {{ form.as_p }}
-                </fieldset>
-                <button type="submit">Register</button>
-            </form>
-        </div>
+        <form method="POST">
+           {% csrf_token %}
+           <div class="form-row">
+               <div class="form-group col-md-4">
+                   {{ form.username|as_crispy_field }}
+               </div>
+           </div>
+              <div class="form-row">
+               <div class="form-group col-md-4">
+                   {{ form.email|as_crispy_field }}
+               </div>
+           </div>
+            <div class="form-row">
+               <div class="form-group col-md-4">
+                   {{ form.password1|as_crispy_field }}
+               </div>
+           </div>
+              <div class="form-row">
+               <div class="form-group col-md-4">
+                   {{ form.password2|as_crispy_field }}
+               </div>
+           </div>
+            <div class="form-row">
+               <div class="form-group col-md-4">
+                   <button type="submit" class="btn btn-primary">Sign Up</button>
+               </div>
+           </div>
+       </form>
         <div>
             <small>Already have an account?</small>
             <a href="{% url 'login' %}">Login</a>

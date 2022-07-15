@@ -25,24 +25,20 @@ class Model(models.Model):
 
 
 class Order(models.Model):
-    STATUS = [
-        ('Active', 'Active'),
-        ('Canceled', 'Cancel')
-    ]
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, blank=True, null=True)
     model = models.ForeignKey(Model, on_delete=models.SET_NULL, blank=True, null=True)
     model_year = models.IntegerField(null=True)
     mileage = models.IntegerField(null=True)
     choose_date = models.DateField(null=True)
+
     chain_change_price = models.BooleanField(null=True, default=False)
     oil_and_oil_filter_change_price = models.BooleanField(null=True, default=False)
     air_filter_change_price = models.BooleanField(null=True, default=False)
     brake_fluid_change_price = models.BooleanField(null=True, default=False)
-    status = models.CharField(null=True, max_length=100, choices=STATUS)
 
-    def __str__(self):
-        return self.brand.name
+    order_status = models.BooleanField(null=True, default=True)
 
     def get_absolute_url(self):
         return reverse('order_details', kwargs={'pk': self.pk})
