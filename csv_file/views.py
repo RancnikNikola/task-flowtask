@@ -17,29 +17,14 @@ def upload_file_view(request):
             obj = CsvFile.objects.get(uploaded=False)
 
             # Open file
-            with open(obj.file_name.path) as file_obj:
-                # Create reader object by passing the file
-                # object to reader method
-                next(file_obj)
-                reader_obj = csv.reader(file_obj)
-
-                # Iterate over each row in the csv
-                # file using reader object
-                list_of_dicts = []
-                for row in reader_obj:
-                    first_dict = {row[0]: row[1:]}
-                    list_of_dicts.append(first_dict)
-
-                real_dict = {
-                    "Aprilia": [],
-                    "Ducati": [],
-                    "Yamaha": [],
-                    "Kawasaki": [],
-                    "Suzuki": []
-                }
-                for second_dict in list_of_dicts:
-                    for key, value in second_dict.items():
-                        real_dict[key].append(value)
+            import csv
+            with open('csv/service_pricing_list.csv', newline='') as f:
+                next(f)
+                reader = csv.DictReader(f, fieldnames=['Brand'])
+                real_dict = {}
+                for item in reader:
+                    real_dict.setdefault(item['Brand'], []).append(item[None])
+                print(real_dict)
 
                 for key, values in real_dict.items():
                     print(key)
